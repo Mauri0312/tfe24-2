@@ -6,6 +6,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <chrono>
 
 // Funktion zum Ausgeben eines Vektors
 void print_vector(const std::vector<int>& vec) {
@@ -41,7 +42,7 @@ auto main(int argc, char **argv) -> int
 
     /* INSERT YOUR CODE HERE */
     
-    int count = 60;
+    int count = 10000;
     app.add_option("-c,--count", count, "Number of random values (default: 20)");
 
     CLI11_PARSE(app, argc, argv);
@@ -62,12 +63,19 @@ auto main(int argc, char **argv) -> int
 
     fmt::print("Random vector with {} elements created.\n", count);
 
-    // Ausgabe des Vektors
     print_vector(values);
 
+    auto start = std::chrono::system_clock::now();
+
     std::sort(values.begin(), values.end());
+
+    auto end = std::chrono::system_clock::now();
+    auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+
+
     fmt::print("Sorted values:\n");
     print_vector(values);
+    fmt::print("Sorting took {} ms.\n", elapsed.count());
 
     return 0; /* exit gracefully*/
 }
