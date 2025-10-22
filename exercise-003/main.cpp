@@ -6,6 +6,14 @@
 #include <vector>
 #include <random>
 
+// Funktion zum Ausgeben eines Vektors
+void print_vector(const std::vector<int>& vec) {
+    fmt::print("Values: ");
+    for (const auto& v : vec) {
+        fmt::print("{} ", v);
+    }
+    fmt::print("\n");
+}
 auto main(int argc, char **argv) -> int
 {
     /**
@@ -52,6 +60,9 @@ auto main(int argc, char **argv) -> int
     }
 
     fmt::print("Random vector with {} elements created.\n", count);
+
+    // Ausgabe des Vektors
+    print_vector(values);
 
     return 0; /* exit gracefully*/
 }
