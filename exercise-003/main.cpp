@@ -5,6 +5,7 @@
 #include "config.h"
 #include <vector>
 #include <random>
+#include <algorithm>
 
 // Funktion zum Ausgeben eines Vektors
 void print_vector(const std::vector<int>& vec) {
@@ -62,6 +63,10 @@ auto main(int argc, char **argv) -> int
     fmt::print("Random vector with {} elements created.\n", count);
 
     // Ausgabe des Vektors
+    print_vector(values);
+
+    std::sort(values.begin(), values.end());
+    fmt::print("Sorted values:\n");
     print_vector(values);
 
     return 0; /* exit gracefully*/
