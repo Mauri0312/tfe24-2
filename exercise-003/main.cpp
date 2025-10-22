@@ -29,6 +29,13 @@ auto main(int argc, char **argv) -> int
     fmt::print("Hello, {}!\n", app.get_name());
 
     /* INSERT YOUR CODE HERE */
+    
+    int count = 20;
+    app.add_option("-c,--count", count, "Number of random values (default: 20)");
+
+    CLI11_PARSE(app, argc, argv);
+
+    fmt::print("Count is: {}\n", count);
 
     return 0; /* exit gracefully*/
 }
